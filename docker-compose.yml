@@ -1,0 +1,37 @@
+version: "3"
+services:
+  producer:
+    build: ./producer
+    ports:
+      - "5000:5000"
+    networks:
+      - rabbitmq_network
+      - microservices_network
+
+  consumer_one:
+    build: ./consumer1
+    networks:
+      - rabbitmq_network
+      - microservices_network
+
+  consumer_two:
+      build: ./consumer2
+      networks:
+      - rabbitmq_network
+      - microservices_network
+  consumer_three:
+      build: ./consumer3
+      networks:
+      - rabbitmq_network
+      - microservices_network
+  consumer_four:
+      build: ./consumer4
+      networks:
+      - rabbitmq_network
+      - microservices_network
+
+networks:
+  microservices_network:
+    name: microservices_network
+  rabbitmq_network:
+    name: rabbitmq_network
